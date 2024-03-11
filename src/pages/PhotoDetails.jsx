@@ -26,7 +26,7 @@ function PhotoDetails() {
           )}
           <h3>{photo.title}</h3>
           <p>{photo.description}</p>
-          <Link to="/photos">Back</Link>
+          <Link to="/">Back</Link>
           <Link to={`/photos/edit/${photo._id}`}>Edit</Link>
         </div>
       )}

@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 /* Import Axios */
 import axios from "axios";
 const API_URL = "http://localhost:5005/api";
+
+const storedToken = localStorage.getItem("authToken");
+
 function EditPhoto() {
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
@@ -16,7 +20,9 @@ function EditPhoto() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/photos/edit/${id}`)
+      .get(`${API_URL}/photos/${id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         setImage(response.data.image);
         setTitle(response.data.title);
@@ -40,7 +46,7 @@ function EditPhoto() {
       category,
     };
 
-    const storedToken = localStorage.getItem("authToken");
+    /* const storedToken = localStorage.getItem("authToken"); */
 
     axios
       .put(`${API_URL}/photos/${id}`, updatedPhoto, {
@@ -54,7 +60,7 @@ function EditPhoto() {
       });
   };
 
-  const storedToken = localStorage.getItem("authToken");
+  /* const storedToken = localStorage.getItem("authToken"); */
   const handleDelete = () => {
     axios
       .delete(`${API_URL}/photos/${id}`, {
@@ -66,8 +72,30 @@ function EditPhoto() {
       .catch((error) => console.log(error));
   };
 
+  /* TESTE */
+  const [photo, setPhoto] = useState({});
+  // Get my Route Params, so I can use them
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/photos/${id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => setPhoto(response.data))
+      .catch((error) => console.log(error));
+  }, [id]);
+
   return (
     <article>
+      <div>
+        {photo && (
+          <div>
+            {photo.image && photo.image && (
+              <img src={photo.image} alt={photo.description} />
+            )}
+          </div>
+        )}
+      </div>
       <form onSubmit={handleSubmit}>
         <label>Image</label>
         <input
@@ -115,6 +143,7 @@ function EditPhoto() {
         <button type="submit">Update Photo</button>
       </form>
       <button onClick={handleDelete}>Delete Photo</button>
+      <Link to="/">Back</Link>
     </article>
   );
 }
