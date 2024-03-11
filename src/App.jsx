@@ -4,10 +4,10 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 /* COMPONENTS */
-import Navbar from "./src/components/Navbar";
-import Footer from "./src/components/Footer";
-import IsAnon from "./src/components/IsAnon";
-import IsPrivate from "./src/components/IsPrivate";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import IsAnon from "./components/IsAnon";
+import IsPrivate from "./components/IsPrivate";
 
 /* PAGES */
 import SignupPage from "./pages/SignupPage";
@@ -22,7 +22,7 @@ import AddPhoto from "./pages/AddPhoto";
 import EditPhoto from "./pages/EditPhoto";
 import PhotoDetails from "./pages/PhotoDetails";
 
-import CameraDetails from "./pages/CameraDetails";
+import CameraDetails from "./pages/CamerasDetails";
 import CameraList from "./pages/CameraList";
 
 function App() {
