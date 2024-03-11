@@ -23,7 +23,7 @@ import EditPhoto from "./pages/EditPhoto";
 import PhotoDetails from "./pages/PhotoDetails";
 
 import CameraDetails from "./pages/CamerasDetails";
-import CameraList from "./pages/CameraList";
+import CamerasList from "./pages/CamerasList";
 
 function App() {
   return (
@@ -76,13 +76,13 @@ function App() {
         {/* PUBLIC ROUTES */}
         <Route path="/" element={<Homepage />} />
         <Route path="/photos/:photoId" element={<PhotoDetails />} />
-        <Route path="/cameras" element={<CameraList />} />
+        <Route path="/cameras" element={<CamerasList />} />
         <Route path="/cameras/:cameraId" element={<CameraDetails />} />{" "}
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Error />} />
         {/* FOOTER */}
-        <Footer />
       </Routes>
+        <Footer />
     </div>
   );
 }
