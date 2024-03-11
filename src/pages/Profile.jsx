@@ -1,10 +1,18 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
+
 function Profile() {
 
-    return (
-        <div>
-            <h1>Hello</h1>
-        </div>
-    )
+  const {user} = useContext(AuthContext);
+
+  return (
+    <section>
+      <div>
+        <h4>{user.name}</h4>
+        <p>{user.email}</p>
+      </div>
+    </section>
+  );
 }
 
 export default Profile;

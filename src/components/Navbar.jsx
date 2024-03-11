@@ -8,7 +8,7 @@ function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
- 
+  
   
   //  Update the rendering logic to display different content 
   //  depending on whether the user is logged in or not
@@ -17,15 +17,18 @@ function Navbar() {
       <Link to="/">
         <button>Home</button>
       </Link>
+      <Link to="/cameras">
+        <button>Cameras</button>
+      </Link>
       <Link to="/about">
         <button>About</button>
-      </Link>  
+      </Link>
 
       {/*    UPDATE     */}
       {isLoggedIn && (
         <>
           <button onClick={logOutUser}>Logout</button>
-          <span>{user && user.name}</span>
+          <Link to="/profile"><span>{user && user.name}</span></Link>
         </>
       )}
  

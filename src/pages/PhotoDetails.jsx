@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 
 /* Import Axios */
 import axios from "axios";
+import SocialShare from "../components/SocialShare";
 
 const API_URL = "http://localhost:5005/api";
 function PhotoDetails() {
@@ -26,6 +27,7 @@ function PhotoDetails() {
           )}
           <h3>{photo.title}</h3>
           <p>{photo.description}</p>
+          <SocialShare />
           <Link to="/">Back</Link>
           <Link to={`/photos/edit/${photo._id}`}>Edit</Link>
         </div>
