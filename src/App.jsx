@@ -27,7 +27,7 @@ import CamerasList from "./pages/CamerasList";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Navbar />
 
       {/* ANON ROUTES */}

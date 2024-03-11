@@ -17,13 +17,13 @@ function Navbar() {
       <Link to="/">
         <button>Home</button>
       </Link>
- 
+      <Link to="/about">
+        <button>About</button>
+      </Link>  
+
       {/*    UPDATE     */}
       {isLoggedIn && (
         <>
-          <Link to="/photos">
-            <button>Photos</button> {/* We can change this later */}
-          </Link>        
           <button onClick={logOutUser}>Logout</button>
           <span>{user && user.name}</span>
         </>

@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom"
 
-
-function Error () {
+function Error() {
     return (
-        <div>
-            <h1>error</h1>
-        </div>
+        <section>
+            <p>Oops... Page not found!</p>
+            <Link to="/"><button>Go Back Home</button></Link>
+        </section>
     )
 }
 

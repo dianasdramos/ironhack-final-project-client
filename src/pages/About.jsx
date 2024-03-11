@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-function AboutPage() {
+function About() {
 
     return (
-        <div>
-
-        </div>
+        <section>
+            <h4>Description?</h4>
+            <div>
+                <img src=""></img>
+                <p>Tomás Bastos</p>
+            </div>
+            <div>
+                <img src=""></img>
+                <p>Diana Ramos</p>
+            </div>
+        </section>
     )
 }
 
-export default AboutPage;
+export default About;

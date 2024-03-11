@@ -1,11 +1,10 @@
 
 function PhotoDetails() {
-
+    
     return (
-        <div>
-
-        </div>
+        <section>
+            
+        </section>
     )
 }
-
 export default PhotoDetails;
