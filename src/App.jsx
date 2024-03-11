@@ -58,7 +58,7 @@ function App() {
           }
         />
         <Route
-          path="/photos/edit/:photoId"
+          path="/photos/edit/:id"
           element={
             <IsPrivate>
               <EditPhoto />
