@@ -15,7 +15,7 @@ function AddPhoto() {
     function handleSubmit(e) {
       e.preventDefault();
       const photo = {
-        imgSrc: { img: img },
+        image: img,
         title,
         year,
         photographer,
@@ -23,6 +23,9 @@ function AddPhoto() {
         category,
   
       };
+
+      const storedToken = localStorage.getItem("authToken");
+
       axios
         .post(`${API_URL}/photo`, photo,
         { headers: { Authorization: `Bearer ${storedToken}` } })
