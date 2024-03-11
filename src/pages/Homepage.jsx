@@ -1,8 +1,10 @@
+import PhotoList from "../components/PhotoList";
+
 function Homepage() {
 
     return (
         <div>
-
+            <PhotoList />
         </div>
     )
 }
