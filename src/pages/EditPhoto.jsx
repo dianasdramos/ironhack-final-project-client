@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 const API_URL = "http://localhost:5005/api";
 function EditPhoto() {
-  const [img, setImg] = useState("");
+  const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [year, setYear] = useState("");
   const [photographer, setPhotographer] = useState("");
@@ -18,8 +18,12 @@ function EditPhoto() {
     axios
       .get(`${API_URL}/photos/edit/${id}`)
       .then((response) => {
-        setName(response.data.name);
+        setImage(response.data.image);
+        setTitle(response.data.title);
+        setYear(response.data.year);
+        setPhotographer(response.data.photographer);
         setDescription(response.data.description);
+        setCategory(response.data.category);
       })
       .catch((error) => console.log(error));
   }, [id]);
@@ -27,23 +31,37 @@ function EditPhoto() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const updatedPlanet = { name, description };
+    const updatedPhoto = {
+      image,
+      title,
+      year,
+      photographer,
+      description,
+      category,
+    };
+
+    const storedToken = localStorage.getItem("authToken");
 
     axios
-      .put(`/api/planets/${id}`, updatedPlanet)
+      .put(`${API_URL}/photos/${id}`, updatedPhoto, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => {
-        navigate("/planets");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  const storedToken = localStorage.getItem("authToken");
   const handleDelete = () => {
     axios
-      .delete(`/api/planets/${id}`)
+      .delete(`${API_URL}/photos/${id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then(() => {
-        navigate("/planets");
+        navigate("/");
       })
       .catch((error) => console.log(error));
   };
@@ -51,12 +69,34 @@ function EditPhoto() {
   return (
     <article>
       <form onSubmit={handleSubmit}>
-        <label>Name</label>
+        <label>Image</label>
         <input
           type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          name="img"
+          value={image}
+          placeholder="Image URL"
+          onChange={(e) => setImage(e.target.value)}
+        />
+        <label>Title</label>
+        <input
+          type="text"
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <label>Year</label>
+        <input
+          type="number"
+          name="year"
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
+        />
+        <label>Photographer</label>
+        <input
+          type="text"
+          name="photographer"
+          value={photographer}
+          onChange={(e) => setPhotographer(e.target.value)}
         />
         <label>Description</label>
         <input
@@ -65,9 +105,16 @@ function EditPhoto() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button type="submit">Update Project</button>
+        <label>Category</label>
+        <input
+          type="text"
+          name="category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+        <button type="submit">Update Photo</button>
       </form>
-      <button onClick={handleDelete}>Delete Project</button>
+      <button onClick={handleDelete}>Delete Photo</button>
     </article>
   );
 }
