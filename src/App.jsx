@@ -75,14 +75,14 @@ function App() {
         />
         {/* PUBLIC ROUTES */}
         <Route path="/" element={<Homepage />} />
-        <Route path="/photos/:photoId" element={<PhotoDetails />} />
+        <Route path="/photos/:id" element={<PhotoDetails />} />
         <Route path="/cameras" element={<CamerasList />} />
-        <Route path="/cameras/:cameraId" element={<CameraDetails />} />{" "}
+        <Route path="/cameras/:id" element={<CameraDetails />} />{" "}
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Error />} />
         {/* FOOTER */}
       </Routes>
-        <Footer />
+      <Footer />
     </div>
   );
 }

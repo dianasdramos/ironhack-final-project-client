@@ -15,8 +15,8 @@ function CamerasList() {
       {cameras &&
         cameras.map((camera) => {
           return (
-            <section key={camera.id} className="cards ">
-              <Link to={`/cameras/${camera.id}`}>
+            <section key={camera._id} className="cards ">
+              <Link to={`/cameras/${camera._id}`}>
                 <div className="img-container">
                   <img src={camera.image} />
                 </div>

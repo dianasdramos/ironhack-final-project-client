@@ -17,10 +17,10 @@ function PhotoList() {
       {photos &&
         photos.map((photo) => {
           return (
-            <section key={photos.id}>
-              <Link to={`/photos/${photos.id}`}>
+            <section key={photo._id}>
+              <Link to={`/photos/${photo._id}`}>
                 <div>
-                  <img src={photo.image} />
+                  <img src={photo.image} alt={photo.title} />
                 </div>
                 <div>
                   <h1>{photo.title}</h1>
