@@ -48,7 +48,7 @@ function Profile() {
       <div>
         {userProfile && (
           <>
-            {/* <img className="w-32 h-32 rounded-full object-cover mb-4" src={student.image} alt="profile-photo" /> */}
+            {/* <img className="w-32 h-32 rounded-full object-cover mb-4" src={user.image} alt="profile-photo" /> */}
             <img
             src={placeholderImage}
             alt="profile-photo"
