@@ -24,8 +24,9 @@ function CamerasDetails() {
           {camera.image && camera.image && (
             <img src={camera.image} alt={camera.description} />
           )}
-          <h3>{camera.name}</h3>
-          <p>{camera.description}</p>
+          <h1>{camera.name}</h1>
+          <h2>{camera.year}</h2>
+          <h3>{camera.description}</h3>
           <Link to="/cameras">Back</Link>
         </div>
       )}

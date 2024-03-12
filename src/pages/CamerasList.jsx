@@ -27,6 +27,7 @@ function CamerasList() {
             </section>
           );
         })}
+      <Link to="/">Back</Link>
     </div>
   );
 }

@@ -25,8 +25,18 @@ function PhotoDetails() {
           {photo.image && photo.image && (
             <img src={photo.image} alt={photo.description} />
           )}
-          <h3>{photo.title}</h3>
-          <p>{photo.description}</p>
+          <h1>{photo.title}</h1>
+          <h2>Year: {photo.year}</h2>
+          <h2>Photographer: {photo.photographer}</h2>
+          <h3>{photo.description}</h3>
+          <h3>Category: {photo.category}</h3>
+
+          <h4>Camera:</h4>
+          {photo && photo.camera && (
+            <Link to={`/cameras/${photo.camera._id}`}>
+              <img src={photo.camera.image} alt={photo.camera.name} />
+            </Link>
+          )}
           <SocialShare />
           <Link to="/">Back</Link>
           <Link to={`/photos/edit/${photo._id}`}>Edit</Link>

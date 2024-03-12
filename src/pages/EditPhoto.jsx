@@ -46,21 +46,21 @@ function EditPhoto() {
       category,
     };
 
-    /* const storedToken = localStorage.getItem("authToken"); */
+    const storedToken = localStorage.getItem("authToken");
 
     axios
       .put(`${API_URL}/photos/${id}`, updatedPhoto, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => {
-        navigate("/");
+        navigate(`/photos/${id}`);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  /* const storedToken = localStorage.getItem("authToken"); */
+  const storedToken = localStorage.getItem("authToken");
   const handleDelete = () => {
     axios
       .delete(`${API_URL}/photos/${id}`, {
