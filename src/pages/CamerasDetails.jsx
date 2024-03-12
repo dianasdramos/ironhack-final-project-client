@@ -27,7 +27,8 @@ function CamerasDetails() {
           <h1>{camera.name}</h1>
           <h2>{camera.year}</h2>
           <h3>{camera.description}</h3>
-          <Link to="/cameras">Back</Link>
+          <Link to="/cameras">Back to Cameras</Link>
+          <Link to="/">Back to Photos </Link>
         </div>
       )}
     </div>

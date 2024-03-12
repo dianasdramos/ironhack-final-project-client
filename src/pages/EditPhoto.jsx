@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 const API_URL = "http://localhost:5005/api";
 
-const storedToken = localStorage.getItem("authToken");
+/* const storedToken = localStorage.getItem("authToken"); */
 
 function EditPhoto() {
   const [image, setImage] = useState("");
