@@ -3,6 +3,7 @@ import axios from "axios";
 import placeholderImage from "./../assets/profile_pic.jpg";
 
 import { AuthContext } from "../context/auth.context";
+import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:5005/auth";
 
@@ -49,16 +50,13 @@ function Profile() {
       <div>
         {userProfile && (
           <>
-            {/* <img className="w-32 h-32 rounded-full object-cover mb-4" src={.image} alt="profile-photo" /> */}
-            <img
-            src={placeholderImage}
-            alt="profile-photo"
-          />            
-            <h1>{userProfile.name}</h1>
+            <img src={user.picture ? user.picture : placeholderImage} alt="profile-photo" />
+           <h1>{userProfile.name}</h1>
           </>
         )}
       </div>
-      
+      <Link to={`/photo`}>Add new photo</Link>
+      <Link to="/">Back</Link>
     </div>
   );
 }

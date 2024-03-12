@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005/api";
 
@@ -11,42 +11,20 @@ function AddPhoto() {
   const [photographer, setPhotographer] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-
-  /* TEST */
+  const [cameras, setCameras] = useState("");
 
   const [selectedCamera, setSelectedCamera] = useState("");
-  const cameras = [
-    {
-      id: "65e9c85da1a4f467f930de1d",
-      name: "Rollei B35",
-    },
-    {
-      id: "65e9c85da1a4f467f930de1e",
-      name: "Asahi Pentax K1000",
-    },
-    {
-      id: "65e9c85da1a4f467f930de1f",
-      name: "Canon AV-1",
-    },
-    {
-      id: "65e9c85da1a4f467f930de20",
-      name: "Lomo Lubitel 166B",
-    },
-    {
-      id: "65e9c85da1a4f467f930de21",
-      name: "Olympus Trip 35",
-    },
-    {
-      id: "65e9c85da1a4f467f930de22",
-      name: "Nikon FE",
-    },
-  ];
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/cameras`)
+      .then((response) => setCameras(response.data))
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleCameraChange = (event) => {
     setSelectedCamera(event.target.value);
   };
-
-  /* TEST */
 
   const navigate = useNavigate();
 
@@ -133,8 +111,8 @@ function AddPhoto() {
             onChange={handleCameraChange}
           >
             <option value="">Select a camera</option>
-            {cameras.map((camera) => (
-              <option key={camera.id} value={camera.id}>
+            {cameras && cameras.map((camera) => (
+              <option key={camera._id} value={camera._id}>
                 {camera.name}
               </option>
             ))}
@@ -142,6 +120,7 @@ function AddPhoto() {
         </div>
         <button type="submit">Submit</button>
       </form>
+      <Link to="/profile">Back</Link>
     </div>
   );
 }

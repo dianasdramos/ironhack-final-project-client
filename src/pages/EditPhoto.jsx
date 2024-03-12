@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 const API_URL = "http://localhost:5005/api";
 
-/* const storedToken = localStorage.getItem("authToken"); */
-
 function EditPhoto() {
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
@@ -15,44 +13,23 @@ function EditPhoto() {
   const [photographer, setPhotographer] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [cameras, setCameras] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
 
-  /* TEST */
-
   const [selectedCamera, setSelectedCamera] = useState("");
-  const cameras = [
-    {
-      id: "65e9c85da1a4f467f930de1d",
-      name: "Rollei B35",
-    },
-    {
-      id: "65e9c85da1a4f467f930de1e",
-      name: "Asahi Pentax K1000",
-    },
-    {
-      id: "65e9c85da1a4f467f930de1f",
-      name: "Canon AV-1",
-    },
-    {
-      id: "65e9c85da1a4f467f930de20",
-      name: "Lomo Lubitel 166B",
-    },
-    {
-      id: "65e9c85da1a4f467f930de21",
-      name: "Olympus Trip 35",
-    },
-    {
-      id: "65e9c85da1a4f467f930de22",
-      name: "Nikon FE",
-    },
-  ];
+
+  // Ir ao backend buscar a lista de camara
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/cameras`)
+      .then((response) => setCameras(response.data))
+      .catch((error) => console.log(error));
+  }, [id]);
 
   const handleCameraChange = (event) => {
     setSelectedCamera(event.target.value);
   };
-
-  /* TEST */
 
   useEffect(() => {
     axios
@@ -66,6 +43,7 @@ function EditPhoto() {
         setPhotographer(response.data.photographer);
         setDescription(response.data.description);
         setCategory(response.data.category);
+        setSelectedCamera(response.data.camera._id);
       })
       .catch((error) => console.log(error));
   }, [id]);
@@ -80,6 +58,7 @@ function EditPhoto() {
       photographer,
       description,
       category,
+      camera: selectedCamera
     };
 
     const storedToken = localStorage.getItem("authToken");
@@ -108,7 +87,6 @@ function EditPhoto() {
       .catch((error) => console.log(error));
   };
 
-  /* TESTE */
   const [photo, setPhoto] = useState({});
   // Get my Route Params, so I can use them
 
@@ -176,32 +154,25 @@ function EditPhoto() {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
-
-        {/* TEST */}
-
         <label>Camera</label>
         <div>
           <label htmlFor="camera">Select a Camera:</label>
           <select
             id="camera"
             value={selectedCamera}
-            onChange={handleCameraChange}
-          >
+            onChange={handleCameraChange}>
             <option value="">Select a camera</option>
-            {cameras.map((camera) => (
-              <option key={camera.id} value={camera.id}>
+            {cameras && cameras.map((camera) => (
+              <option key={camera._id} value={camera._id}>
                 {camera.name}
               </option>
             ))}
           </select>
         </div>
-
-        {/* TEST */}
-
         <button type="submit">Update Photo</button>
       </form>
       <button onClick={handleDelete}>Delete Photo</button>
-      <Link to="/">Back</Link>
+      <Link to={`/photos/${id}`}>Back</Link>
     </article>
   );
 }
