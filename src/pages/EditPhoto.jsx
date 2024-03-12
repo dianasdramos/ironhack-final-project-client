@@ -18,6 +18,42 @@ function EditPhoto() {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  /* TEST */
+
+  const [selectedCamera, setSelectedCamera] = useState("");
+  const cameras = [
+    {
+      id: "65e9c85da1a4f467f930de1d",
+      name: "Rollei B35",
+    },
+    {
+      id: "65e9c85da1a4f467f930de1e",
+      name: "Asahi Pentax K1000",
+    },
+    {
+      id: "65e9c85da1a4f467f930de1f",
+      name: "Canon AV-1",
+    },
+    {
+      id: "65e9c85da1a4f467f930de20",
+      name: "Lomo Lubitel 166B",
+    },
+    {
+      id: "65e9c85da1a4f467f930de21",
+      name: "Olympus Trip 35",
+    },
+    {
+      id: "65e9c85da1a4f467f930de22",
+      name: "Nikon FE",
+    },
+  ];
+
+  const handleCameraChange = (event) => {
+    setSelectedCamera(event.target.value);
+  };
+
+  /* TEST */
+
   useEffect(() => {
     axios
       .get(`${API_URL}/photos/${id}`, {
@@ -140,6 +176,28 @@ function EditPhoto() {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
+
+        {/* TEST */}
+
+        <label>Camera</label>
+        <div>
+          <label htmlFor="camera">Select a Camera:</label>
+          <select
+            id="camera"
+            value={selectedCamera}
+            onChange={handleCameraChange}
+          >
+            <option value="">Select a camera</option>
+            {cameras.map((camera) => (
+              <option key={camera.id} value={camera.id}>
+                {camera.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* TEST */}
+
         <button type="submit">Update Photo</button>
       </form>
       <button onClick={handleDelete}>Delete Photo</button>
