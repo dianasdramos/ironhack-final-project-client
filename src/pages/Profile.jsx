@@ -4,7 +4,7 @@ import placeholderImage from "./../assets/profile_pic.jpg";
 
 import { AuthContext } from "../context/auth.context";
 
-const API_URL = "http://localhost:5005/api";
+const API_URL = "http://localhost:5005/auth";
 
 function Profile() {
   const [userProfile, setUserProfile] = useState(null);
@@ -19,11 +19,12 @@ function Profile() {
       if (storedToken) {
         axios
         .get(
-          `${API_URL}/profile/${user._id}`,
+          `${API_URL}/verify`,
           { headers: { Authorization: `Bearer ${storedToken}` }}
           )
           .then((response) => {
             setUserProfile(response.data);
+            console.log(response.data)
             setLoading(false);
           })
           .catch((error) => {
@@ -37,7 +38,7 @@ function Profile() {
     };
 
     getUser();
-  }, [user._id]);
+  }, []);
 
   if (errorMessage) return <div>{errorMessage}</div>;
   
@@ -48,7 +49,7 @@ function Profile() {
       <div>
         {userProfile && (
           <>
-            {/* <img className="w-32 h-32 rounded-full object-cover mb-4" src={user.image} alt="profile-photo" /> */}
+            {/* <img className="w-32 h-32 rounded-full object-cover mb-4" src={.image} alt="profile-photo" /> */}
             <img
             src={placeholderImage}
             alt="profile-photo"
