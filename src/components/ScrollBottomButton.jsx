@@ -8,7 +8,7 @@ function ScrollBottomButton() {
 
   return (
     <div>
-      <button onClick={scrollTo}>Scroll to Bottom</button>
+      <button onClick={scrollTo}>Scroll Down</button>
     </div>
   );
 }
