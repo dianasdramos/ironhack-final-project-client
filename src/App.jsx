@@ -1,5 +1,5 @@
 /* REACT */
-import { useState } from "react";
+
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -24,6 +24,14 @@ import PhotoDetails from "./pages/PhotoDetails";
 
 import CameraDetails from "./pages/CamerasDetails";
 import CamerasList from "./pages/CamerasList";
+
+/* PAGES FILTER */
+import Nikon from "./pages/Nikon";
+import Olympus from "./pages/Olympus";
+import Lomo from "./pages/Lomo";
+import Canon from "./pages/Canon";
+import Pentax from "./pages/Pentax";
+import Rolei from "./pages/Rolei";
 
 function App() {
   return (
@@ -79,6 +87,12 @@ function App() {
         <Route path="/cameras" element={<CamerasList />} />
         <Route path="/cameras/:id" element={<CameraDetails />} />{" "}
         <Route path="/about" element={<About />} />
+        <Route path="/nikon" element={<Nikon />} />
+        <Route path="/olympus" element={<Olympus />} />
+        <Route path="/lomo" element={<Lomo />} />
+        <Route path="/canon" element={<Canon />} />
+        <Route path="/pentax" element={<Pentax />} />
+        <Route path="/rolei" element={<Rolei />} />
         <Route path="*" element={<Error />} />
         {/* FOOTER */}
       </Routes>
