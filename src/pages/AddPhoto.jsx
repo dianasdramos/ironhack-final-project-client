@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 const API_URL = "http://localhost:5005/api";
 
 function AddPhoto() {
+  const { user } = useContext(AuthContext);
   const [image, setImage] = useState("");
   const [title, setTitle] = useState("");
   const [year, setYear] = useState("");
@@ -38,6 +40,7 @@ function AddPhoto() {
       description,
       category,
       camera: selectedCamera,
+      /*nome do model */user: /*valor do id*/ user._id
     };
 
     const storedToken = localStorage.getItem("authToken");
