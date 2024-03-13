@@ -16,6 +16,8 @@ function EditPhoto() {
   const [cameras, setCameras] = useState("");
   const navigate = useNavigate();
   const { id } = useParams();
+  const [imageUrl, setImageUrl] = useState(null);
+  const [waitingForImageUrl, setWaitingForImageUrl] = useState(false);
 
   const [selectedCamera, setSelectedCamera] = useState("");
 
@@ -48,6 +50,45 @@ function EditPhoto() {
       .catch((error) => console.log(error));
   }, [id]);
 
+  const handleChange = (url) => {
+    setImage(url);
+  };
+  const handleFileUpload = (e) => {
+    // disable the submit form button till we get the image url from Cloudinary
+    setWaitingForImageUrl(true);
+
+    //check if we receive the file path correctly
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    // create url including your personal Cloudinary Name
+    const url = `https://api.cloudinary.com/v1_1/${
+      import.meta.env.VITE_CLOUDINARY_NAME
+    }/upload`;
+
+    const dataToUpload = new FormData();
+    // properties needs to have those specific names!!!
+    dataToUpload.append("file", e.target.files[0]);
+    // VITE_UNSIGNED_UPLOAD_PRESET => name of the unsigned upload preset created in your Cloudinary account
+    dataToUpload.append(
+      "upload_preset",
+      import.meta.env.VITE_UNSIGNED_UPLOAD_PRESET
+    );
+
+    axios
+      .post(url, dataToUpload)
+      .then((response) => {
+        // to see the structure of the response
+        console.log("RESPONSE ", response.data);
+        // the image url is stored in the property secure_url
+        setImageUrl(response.data.secure_url);
+        setWaitingForImageUrl(false);
+        handleChange(response.data.secure_url);
+      })
+      .catch((error) => {
+        console.error("Error uploading the file:", error);
+      });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -58,7 +99,7 @@ function EditPhoto() {
       photographer,
       description,
       category,
-      camera: selectedCamera
+      camera: selectedCamera,
     };
 
     const storedToken = localStorage.getItem("authToken");
@@ -102,6 +143,7 @@ function EditPhoto() {
   return (
     <article>
       <div>
+        {imageUrl && <img src={imageUrl} alt="my cloudinary image" />}
         {photo && (
           <div>
             {photo.image && photo.image && (
@@ -113,11 +155,10 @@ function EditPhoto() {
       <form onSubmit={handleSubmit}>
         <label>Image</label>
         <input
-          type="text"
+          type="file"
           name="img"
-          value={image}
           placeholder="Image URL"
-          onChange={(e) => setImage(e.target.value)}
+          onChange={(e) => handleFileUpload(e)}
         />
         <label>Title</label>
         <input
@@ -154,19 +195,21 @@ function EditPhoto() {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
-        <label>Camera</label>
+
         <div>
           <label htmlFor="camera">Select a Camera:</label>
           <select
             id="camera"
             value={selectedCamera}
-            onChange={handleCameraChange}>
+            onChange={handleCameraChange}
+          >
             <option value="">Select a camera</option>
-            {cameras && cameras.map((camera) => (
-              <option key={camera._id} value={camera._id}>
-                {camera.name}
-              </option>
-            ))}
+            {cameras &&
+              cameras.map((camera) => (
+                <option key={camera._id} value={camera._id}>
+                  {camera.name}
+                </option>
+              ))}
           </select>
         </div>
         <button type="submit">Update Photo</button>
