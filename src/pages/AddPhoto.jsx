@@ -81,7 +81,7 @@ function AddPhoto() {
       description,
       category,
       camera: selectedCamera,
-      /*nome do model */ user: /*valor do id*/ user._id,
+      user: user._id,
     };
 
     const storedToken = localStorage.getItem("authToken");

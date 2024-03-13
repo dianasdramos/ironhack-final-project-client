@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 /* Import Axios */
 import axios from "axios";
+import { AuthContext } from "../context/auth.context";
 const API_URL = "http://localhost:5005/api";
 
 function EditPhoto() {
@@ -18,8 +19,8 @@ function EditPhoto() {
   const { id } = useParams();
   const [imageUrl, setImageUrl] = useState(null);
   const [waitingForImageUrl, setWaitingForImageUrl] = useState(false);
-
   const [selectedCamera, setSelectedCamera] = useState("");
+  const { user } = useContext(AuthContext);
 
   // Ir ao backend buscar a lista de camara
   useEffect(() => {
@@ -100,6 +101,7 @@ function EditPhoto() {
       description,
       category,
       camera: selectedCamera,
+      user: user._id
     };
 
     const storedToken = localStorage.getItem("authToken");

@@ -4,6 +4,7 @@ import placeholderImage from "./../assets/profile_pic.jpg";
 
 import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
+import UserPhotos from "../components/UserPhotos";
 
 const API_URL = "http://localhost:5005/auth";
 
@@ -56,6 +57,7 @@ function Profile() {
         )}
       </div>
       <Link to={`/photo`}>Add new photo</Link>
+      <UserPhotos />
       <Link to="/">Back</Link>
     </div>
   );
