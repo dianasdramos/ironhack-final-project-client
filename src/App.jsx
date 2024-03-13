@@ -97,7 +97,6 @@ function App() {
         <Route path="*" element={<Error />} />
         {/* FOOTER */}
       </Routes>
-      <ScrollTopButton />
       <Footer />
     </div>
   );
