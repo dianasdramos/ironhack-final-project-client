@@ -5,7 +5,7 @@ const API_URL = "https://ironhack-final-project-server.onrender.com";
 function CamerasList() {
   const [cameras, setCameras] = useState([]);
 
-    // this is a comment for the useeffect
+  // this is a comment for the useeffect
   useEffect(() => {
     axios
       .get(`${API_URL}/api/cameras`)
@@ -13,16 +13,16 @@ function CamerasList() {
       .catch((error) => console.log(error));
   }, []);
   return (
-    <div className="planet-container">
+    <div className="w-100 flex items-center flex-col">
       {cameras &&
         cameras.map((camera) => {
           return (
-            <section key={camera._id} className="cards ">
+            <section key={camera._id} className="cards  my-10 ">
               <Link to={`/cameras/${camera._id}`}>
-                <div className="img-container">
+                <div className="mb-10">
                   <img src={camera.image} />
                 </div>
-                <div className="name-container">
+                <div className="my-10">
                   <h1>{camera.name}</h1>
                 </div>
               </Link>

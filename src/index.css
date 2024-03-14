@@ -46,6 +46,13 @@ h1 {
   margin-top: 20px;
 }
 
+nav button {
+  background-color: white;
+  color: black;
+  border: solid 1px black;
+  margin-bottom: 10px;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;

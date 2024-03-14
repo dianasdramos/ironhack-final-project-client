@@ -11,28 +11,30 @@ function Navbar() {
   //  depending on whether the user is logged in or not
   return (
     <nav className="navbar bg-base-100 text-black">
-      <div className="flex-1 bg-black w-full">
-        <a className="btn btn-ghost text-xl text-white">vintagegram</a>
+      <div className="flex-1 bg-black w-full py-2 mb-3 ">
+        <Link to="/">
+          <a className="btn btn-ghost text-xl text-white">vintagegram</a>
+        </Link>
       </div>
       <div className="flex-end">
         <ul className="menu menu-horizontal px-1">
           <li>
             <details>
-              <summary>Menu</summary>
+              <summary className="mb-5">Menu</summary>
               <ul className="p-2 bg-base-100 rounded-t-none">
-                <li>
+                {/*  <li>
                   <Link to="/">
                     <button>Home</button>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/cameras">
-                    <button>Cameras</button>
+                    <button>CAMERAS</button>
                   </Link>
                 </li>
                 <li>
                   <Link to="/about">
-                    <button>About</button>
+                    <button>ABOUT</button>
                   </Link>
                 </li>
 
@@ -40,9 +42,11 @@ function Navbar() {
                 {isLoggedIn && (
                   <>
                     <li>
-                      <button onClick={logOutUser}>Logout</button>
+                      <button onClick={logOutUser}>LOGOUT</button>
                       <Link to="/profile">
-                        <span>{user && user.name}</span>
+                        <span className="text-black underline underline-offset-8 flex justify-center mt-1 mb-5">
+                          {user && user.name}
+                        </span>
                       </Link>
                     </li>
                   </>
@@ -53,13 +57,13 @@ function Navbar() {
                     <li>
                       <Link to="/signup">
                         {" "}
-                        <button>Sign Up</button>{" "}
+                        <button>SIGN UP</button>{" "}
                       </Link>
                     </li>
                     <li>
                       <Link to="/login">
                         {" "}
-                        <button>Login</button>{" "}
+                        <button>LOGIN</button>{" "}
                       </Link>
                     </li>
                   </>

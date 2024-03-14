@@ -20,15 +20,24 @@ function CamerasDetails() {
   return (
     <div>
       {camera && (
-        <div>
+        <div className="flex  flex items-center flex-col my-5">
           {camera.image && camera.image && (
             <img src={camera.image} alt={camera.description} />
           )}
-          <h1>{camera.name}</h1>
-          <h2>{camera.year}</h2>
-          <h3>{camera.description}</h3>
-          <Link to="/cameras">Back to Cameras</Link>
-          <Link to="/">Back to Photos </Link>
+          <h1 className="underline underline-offset-8 my-10">{camera.name}</h1>
+          <h2 className="my-5 text-center mx-[200px]">{camera.year}</h2>
+          <h3 className="mb-8 text-center mx-[200px]">{camera.description}</h3>
+          <div className="flex justify-center">
+            <Link
+              className="underline underline-offset-8 mx-4 my-8"
+              to="/cameras"
+            >
+              &lt; Cameras
+            </Link>
+            <Link className="underline underline-offset-8 mx-4 my-8" to="/">
+              Photos &gt;
+            </Link>
+          </div>
         </div>
       )}
     </div>

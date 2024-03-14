@@ -1,5 +1,3 @@
-import React from "react";
-
 function ScrollBottomButton() {
   const scrollTo = () => {
     window.scrollTo({
@@ -9,7 +7,7 @@ function ScrollBottomButton() {
   };
 
   return (
-    <div className="mt-5 mb-2">
+    <div className="mt-[120px] mb-2">
       <button onClick={scrollTo} className="text-white">
         &#8595;
       </button>

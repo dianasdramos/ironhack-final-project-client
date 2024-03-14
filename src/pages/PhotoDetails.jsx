@@ -19,27 +19,37 @@ function PhotoDetails() {
   }, [id]);
 
   return (
-    <div>
+    <div className="flex justify-center">
       {photo && (
         <div>
           {photo.image && photo.image && (
             <img src={photo.image} alt={photo.description} />
           )}
-          <h1>{photo.title}</h1>
-          <h2>Year: {photo.year}</h2>
-          <h2>Photographer: {photo.photographer}</h2>
-          <h3>{photo.description}</h3>
-          <h3>Category: {photo.category}</h3>
+          <h1 className="underline underline-offset-8 my-10">{photo.title}</h1>
+          <h2 className="my-5">Year: {photo.year}</h2>
+          <h2 className="my-5">Photographer: {photo.photographer}</h2>
+          <h3 className="my-5">{photo.description}</h3>
+          <h3 className="my-5">Category: {photo.category}</h3>
 
           <h4>Camera:</h4>
           {photo && photo.camera && (
-            <Link to={`/cameras/${photo.camera._id}`}>
+            <Link
+              className="flex justify-center my-8"
+              to={`/cameras/${photo.camera._id}`}
+            >
               <img src={photo.camera.image} alt={photo.camera.name} />
             </Link>
           )}
           <SocialShare />
-          <Link to="/">Back</Link>
-          <Link to={`/photos/edit/${photo._id}`}>Edit</Link>
+          <Link className="underline underline-offset-8 mx-4 my-10" to="/">
+            &lt; Back
+          </Link>
+          <Link
+            className="underline underline-offset-8 mx-4 my-10"
+            to={`/photos/edit/${photo._id}`}
+          >
+            Edit &gt;
+          </Link>
         </div>
       )}
     </div>
