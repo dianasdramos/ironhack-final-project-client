@@ -32,7 +32,6 @@ import Lomo from "./pages/Lomo";
 import Canon from "./pages/Canon";
 import Pentax from "./pages/Pentax";
 import Rolei from "./pages/Rolei";
-import ScrollTopButton from "./components/ScrollTopButton";
 
 function App() {
   return (
