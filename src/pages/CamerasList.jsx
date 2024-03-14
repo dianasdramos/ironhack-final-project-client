@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 const API_URL = "https://ironhack-final-project-server.onrender.com";
 function CamerasList() {
   const [cameras, setCameras] = useState([]);
+
+    // this is a comment for the useeffect
   useEffect(() => {
     axios
       .get(`${API_URL}/api/cameras`)

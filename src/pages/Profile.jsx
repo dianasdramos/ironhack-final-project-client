@@ -14,6 +14,8 @@ function Profile() {
   const { user } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
+
+  // this is a comment for the useeffect
   useEffect(() => {
     const getUser = () => {
       const storedToken = localStorage.getItem("authToken");
