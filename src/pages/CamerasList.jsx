@@ -6,7 +6,7 @@ function CamerasList() {
   const [cameras, setCameras] = useState([]);
   useEffect(() => {
     axios
-      .get(`${API_URL}/cameras`)
+      .get(`${API_URL}/api/cameras`)
       .then((response) => setCameras(response.data))
       .catch((error) => console.log(error));
   }, []);
