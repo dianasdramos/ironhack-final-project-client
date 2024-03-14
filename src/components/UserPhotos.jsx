@@ -13,7 +13,7 @@ function UserPhotos() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/photos/user/${user._id}`, {
+      .get(`${API_URL}/api/photos/user/${user._id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setPhotos(response.data))
