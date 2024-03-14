@@ -13,7 +13,7 @@ function PhotoDetails() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/photos/${id}`)
+      .get(`${API_URL}/api/photos/${id}`)
       .then((response) => setPhoto(response.data))
       .catch((error) => console.log(error));
   }, [id]);

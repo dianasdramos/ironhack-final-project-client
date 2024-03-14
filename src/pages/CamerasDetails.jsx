@@ -12,7 +12,7 @@ function CamerasDetails() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/cameras/${id}`)
+      .get(`${API_URL}/api/cameras/${id}`)
       .then((response) => setCamera(response.data))
       .catch((error) => console.log(error));
   }, [id]);
