@@ -21,7 +21,7 @@ function Profile() {
       if (storedToken) {
         axios
         .get(
-          `${API_URL}/verify`,
+          `${API_URL}/auth/verify`,
           { headers: { Authorization: `Bearer ${storedToken}` }}
           )
           .then((response) => {
