@@ -1,5 +1,5 @@
-import githubIcon from "./../assets/githubIcon.png"
-import linkedinIcon from "./../assets/linkedinIcon.png"
+import githubIcon from "./../assets/github.png"
+import linkedinIcon from "./../assets/linkedin.png"
 
 function About() {
 
