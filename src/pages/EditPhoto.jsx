@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 /* Import Axios */
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
-const API_URL = "http://localhost:5005/api";
+const API_URL = "https://ironhack-final-project-server.onrender.com";
 
 function EditPhoto() {
   const [image, setImage] = useState("");

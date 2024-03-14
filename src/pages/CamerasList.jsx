@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-const API_URL = "http://localhost:5005/api";
+const API_URL = "https://ironhack-final-project-server.onrender.com";
 function CamerasList() {
   const [cameras, setCameras] = useState([]);
   useEffect(() => {

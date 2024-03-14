@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 /* Import Axios */
 import axios from "axios";
 
-const API_URL = "http://localhost:5005/api";
+const API_URL = "https://ironhack-final-project-server.onrender.com";
 function CamerasDetails() {
   const [camera, setCamera] = useState({});
   // Get my Route Params, so I can use them

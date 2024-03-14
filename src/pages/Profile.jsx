@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 import UserPhotos from "../components/UserPhotos";
 
-const API_URL = "http://localhost:5005/auth";
+const API_URL = "https://ironhack-final-project-server.onrender.com";
 
 function Profile() {
   const [userProfile, setUserProfile] = useState(null);

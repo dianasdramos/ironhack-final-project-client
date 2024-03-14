@@ -4,7 +4,7 @@ import { FacebookShareButton, FacebookIcon } from 'react-share';
 import { TwitterShareButton, TwitterIcon } from 'react-share';
 import { WhatsappShareButton, WhatsappIcon } from 'react-share';
 
-const API_URL = "http://localhost:5005/api";
+const API_URL = "https://ironhack-final-project-server.onrender.com";
 
 function SocialShare() {
   const {id} = useParams();

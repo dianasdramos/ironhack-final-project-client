@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-const API_URL = "http://localhost:5005/api";
+const API_URL = "https://ironhack-final-project-server.onrender.com";
 
 function AddPhoto() {
   const { user } = useContext(AuthContext);

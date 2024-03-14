@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import SocialShare from "../components/SocialShare";
 
-const API_URL = "http://localhost:5005/api";
+const API_URL = "https://ironhack-final-project-server.onrender.com";
 function PhotoDetails() {
   const [photo, setPhoto] = useState({});
   // Get my Route Params, so I can use them
