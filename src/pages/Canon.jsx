@@ -8,7 +8,7 @@ function Canon() {
   const [photos, setPhotos] = useState([]);
   useEffect(() => {
     axios
-      .get(`${API_URL}/photos`)
+      .get(`${API_URL}/api/photos`)
       .then((response) => setPhotos(response.data))
       .catch((error) => console.log(error));
   }, []);
