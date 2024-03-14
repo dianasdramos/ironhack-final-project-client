@@ -10,7 +10,9 @@ function ScrollTopButton() {
 
   return (
     <div>
-      <button onClick={scrollToTop}>Scroll Up</button>
+      <button onClick={scrollToTop} className="text-white">
+        &#8593;
+      </button>
     </div>
   );
 }

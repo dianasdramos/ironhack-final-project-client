@@ -13,7 +13,7 @@ function PhotoList() {
       .catch((error) => console.log(error));
   }, []);
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-20 my-10">
       {photos &&
         photos.map((photo) => {
           return (

@@ -9,8 +9,10 @@ function ScrollBottomButton() {
   };
 
   return (
-    <div>
-      <button onClick={scrollTo}>Scroll Down</button>
+    <div className="mt-5 mb-2">
+      <button onClick={scrollTo} className="text-white">
+        &#8595;
+      </button>
     </div>
   );
 }
