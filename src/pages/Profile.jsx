@@ -47,13 +47,15 @@ function Profile() {
 
   return (
     <div>
-      <div className="my-8 flex justify-center">
+      <div className="my-8 flex flex-col justify-center">
         {userProfile && (
           <>
-            <img
+            <div className="flex justify-center">
+              <img className="w-80 h-80"
               src={user.picture ? user.picture : placeholderImage}
               alt="profile-photo"
             />
+            </div>
             <h1>{userProfile.name}</h1>
           </>
         )}

@@ -21,7 +21,7 @@ function AddPhoto() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/cameras`)
+      .get(`${API_URL}/api/cameras`)
       .then((response) => setCameras(response.data))
       .catch((error) => console.log(error));
   }, []);
@@ -87,7 +87,7 @@ function AddPhoto() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/photo`, photo, {
+      .post(`${API_URL}/api/photo`, photo, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => navigate("/"))

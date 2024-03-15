@@ -21,7 +21,7 @@ function UserPhotos() {
   }, []);
   
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-20 my-10">
       {photos &&
         photos.map((photo) => {
           return (

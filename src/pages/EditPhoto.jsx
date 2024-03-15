@@ -25,7 +25,7 @@ function EditPhoto() {
   // Ir ao backend buscar a lista de camara
   useEffect(() => {
     axios
-      .get(`${API_URL}/cameras`)
+      .get(`${API_URL}/api/cameras`)
       .then((response) => setCameras(response.data))
       .catch((error) => console.log(error));
   }, [id]);
@@ -36,7 +36,7 @@ function EditPhoto() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/photos/${id}`, {
+      .get(`${API_URL}/api/photos/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -107,7 +107,7 @@ function EditPhoto() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .put(`${API_URL}/photos/${id}`, updatedPhoto, {
+      .put(`${API_URL}/api/photos/${id}`, updatedPhoto, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => {
@@ -121,7 +121,7 @@ function EditPhoto() {
   const storedToken = localStorage.getItem("authToken");
   const handleDelete = () => {
     axios
-      .delete(`${API_URL}/photos/${id}`, {
+      .delete(`${API_URL}/api/photos/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => {
@@ -135,7 +135,7 @@ function EditPhoto() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/photos/${id}`, {
+      .get(`${API_URL}/api/photos/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setPhoto(response.data))
