@@ -63,6 +63,10 @@ function Profile() {
       <Link className=" underline underline-offset-8 my-8" to={`/photo`}>
         ADD PHOTO
       </Link>
+      <div>
+        <h1 className="text-black text-left underline underline-offset-8 my-8">
+          my photos &gt;</h1>
+      </div>
       <div className="my-8 flex justify-center">
         <UserPhotos />
       </div>
