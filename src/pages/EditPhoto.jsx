@@ -101,7 +101,7 @@ function EditPhoto() {
       description,
       category,
       camera: selectedCamera,
-      user: user._id
+      user: user._id,
     };
 
     const storedToken = localStorage.getItem("authToken");
@@ -143,7 +143,7 @@ function EditPhoto() {
   }, [id]);
 
   return (
-    <article>
+    <article className="justify-center my-10 mx-8">
       <div>
         {imageUrl && <img src={imageUrl} alt="my cloudinary image" />}
         {photo && (
@@ -155,69 +155,104 @@ function EditPhoto() {
         )}
       </div>
       <form onSubmit={handleSubmit}>
-        <label>Image</label>
+        <label className="justify-center mx-8">Image:</label>
         <input
           type="file"
           name="img"
           placeholder="Image URL"
           onChange={(e) => handleFileUpload(e)}
         />
-        <label>Title</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <label>Year</label>
-        <input
-          type="number"
-          name="year"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        />
-        <label>Photographer</label>
-        <input
-          type="text"
-          name="photographer"
-          value={photographer}
-          onChange={(e) => setPhotographer(e.target.value)}
-        />
-        <label>Description</label>
-        <input
-          type="text"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <label>Category</label>
-        <input
-          type="text"
-          name="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
+        <label className="input input-bordered flex items-center gap-2 my-8">
+          Title:
+          <input
+            type="text"
+            className="grow pr-10"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </label>
+        <label className="input input-bordered flex items-center gap-2 my-8 w-full">
+          Year:
+          <input
+            type="number"
+            className="grow"
+            name="year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          />
+        </label>
+        <label className="input input-bordered flex items-center gap-2 my-8">
+          Photographer:
+          <input
+            type="text"
+            className="grow"
+            name="photographer"
+            value={photographer}
+            onChange={(e) => setPhotographer(e.target.value)}
+          />
+        </label>
+        <label className="input input-bordered flex items-center gap-2 my-8">
+          Description:
+          <input
+            type="text"
+            className="grow"
+            name="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </label>
+        <label className="input input-bordered flex items-center gap-2 my-8">
+          Category:
+          <input
+            type="text"
+            className="grow"
+            name="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+        </label>
 
         <div>
-          <label htmlFor="camera">Select a Camera:</label>
-          <select
-            id="camera"
-            value={selectedCamera}
-            onChange={handleCameraChange}
+          <label
+            htmlFor="camera"
+            className="input input-bordered flex items-center gap-2 my-8"
           >
-            <option value="">Select a camera</option>
-            {cameras &&
-              cameras.map((camera) => (
-                <option key={camera._id} value={camera._id}>
-                  {camera.name}
-                </option>
-              ))}
-          </select>
+            Select a Camera:
+            <select
+              id="camera"
+              className="grow"
+              value={selectedCamera}
+              onChange={handleCameraChange}
+            >
+              <option value="">Select a camera</option>
+              {cameras &&
+                cameras.map((camera) => (
+                  <option key={camera._id} value={camera._id}>
+                    {camera.name}
+                  </option>
+                ))}
+            </select>
+          </label>
         </div>
-        <button type="submit">Update Photo</button>
+        <button className="underline underline-offset-8" type="submit">
+          UPDATE PHOTO
+        </button>
       </form>
-      <button onClick={handleDelete}>Delete Photo</button>
-      <Link to={`/photos/${id}`}>Back</Link>
+      <div className="flex items-center flex-col my-8">
+        <button
+          className="bg-white underline underline-offset-8"
+          onClick={handleDelete}
+        >
+          DELETE PHOTO
+        </button>
+        <Link
+          className="underline underline-offset-8 my-5"
+          to={`/photos/${id}`}
+        >
+          &lt; BACK
+        </Link>
+      </div>
     </article>
   );
 }

@@ -14,7 +14,6 @@ function Profile() {
   const { user } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-
   // this is a comment for the useeffect
   useEffect(() => {
     const getUser = () => {
@@ -22,45 +21,52 @@ function Profile() {
 
       if (storedToken) {
         axios
-        .get(
-          `${API_URL}/auth/verify`,
-          { headers: { Authorization: `Bearer ${storedToken}` }}
-          )
+          .get(`${API_URL}/auth/verify`, {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          })
           .then((response) => {
             setUserProfile(response.data);
-            console.log(response.data)
+            console.log(response.data);
             setLoading(false);
           })
           .catch((error) => {
             const errorDescription = error.response.data.message;
             setErrorMessage(errorDescription);
           });
-        }
-        else {
-          setErrorMessage("User not logged in");
-        }
+      } else {
+        setErrorMessage("User not logged in");
+      }
     };
 
     getUser();
   }, []);
 
   if (errorMessage) return <div>{errorMessage}</div>;
-  
+
   if (loading) return <div>Loading...</div>;
 
   return (
     <div>
-      <div>
+      <div className="my-8 flex justify-center">
         {userProfile && (
           <>
-            <img src={user.picture ? user.picture : placeholderImage} alt="profile-photo" />
-           <h1>{userProfile.name}</h1>
+            <img
+              src={user.picture ? user.picture : placeholderImage}
+              alt="profile-photo"
+            />
+            <h1>{userProfile.name}</h1>
           </>
         )}
       </div>
-      <Link to={`/photo`}>Add new photo</Link>
-      <UserPhotos />
-      <Link to="/">Back</Link>
+      <Link className=" underline underline-offset-8 my-8" to={`/photo`}>
+        ADD PHOTO
+      </Link>
+      <div className="my-8 flex justify-center">
+        <UserPhotos />
+      </div>
+      <Link className="underline underline-offset-8 my-8" to="/">
+        &lt; BACK
+      </Link>
     </div>
   );
 }
