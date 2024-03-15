@@ -48,23 +48,34 @@ function LoginPage(props) {
     <div className="LoginPage">
       <Hero />
       <h1>Login</h1>
+      <div className="justify-center my-10 mx-8">
+        <form onSubmit={handleLoginSubmit}>
+          <label className="input input-bordered flex items-center gap-2 my-8">
+            Email:
+            <input
+              type="email"
+              name="email"
+              className="grow pr-10"
+              value={email}
+              onChange={handleEmail}
+            />
+          </label>
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+          <label className="input input-bordered flex items-center gap-2 my-8">
+            Password:
+            <input
+              type="password"
+              name="password"
+              className="grow pr-10"
+              value={password}
+              onChange={handlePassword}
+            />
+          </label>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <button type="submit">Login</button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+          <button type="submit">LOGIN</button>
+        </form>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </div>
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>
     </div>

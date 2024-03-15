@@ -42,36 +42,59 @@ function SignupPage(props) {
     <div className="SignupPage">
       <Hero />
       <h1>Sign Up</h1>
+      <div className="justify-center my-10 mx-8">
+        <form onSubmit={handleSignupSubmit}>
+          <label className="input input-bordered flex items-center gap-2 my-8">
+            Email:
+            <input
+              type="email"
+              name="email"
+              className="grow pr-10"
+              value={email}
+              onChange={handleEmail}
+            />
+          </label>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+          <label className="input input-bordered flex items-center gap-2 my-8">
+            Password:
+            <input
+              type="password"
+              name="password"
+              className="grow pr-10"
+              value={password}
+              onChange={handlePassword}
+            />
+          </label>
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+          <label className="input input-bordered flex items-center gap-2 my-8">
+            Name:
+            <input
+              type="text"
+              name="name"
+              className="grow pr-10"
+              value={name}
+              onChange={handleName}
+            />
+          </label>
+          <label className="input input-bordered flex items-center gap-2 my-8">
+            Picture:
+            <input
+              type="text"
+              className="grow pr-10"
+              name="picture"
+              value={picture}
+              onChange={handlePicture}
+            />
+          </label>
 
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={handleName} />
-        <label>Picture:</label>
-        <input
-          type="text"
-          name="picture"
-          value={picture}
-          onChange={handlePicture}
-        />
+          <button type="submit">Sign Up</button>
+        </form>
 
-        <button type="submit">Sign Up</button>
-      </form>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+        <p>Already have account?</p>
+        <Link to={"/login"}> Login</Link>
+      </div>
     </div>
   );
 }
