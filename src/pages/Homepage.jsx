@@ -2,6 +2,7 @@ import PhotoList from "../components/PhotoList";
 import ScrollTopButton from "../components/ScrollTopButton";
 import ScrollBottomButton from "../components/ScrollBottomButton";
 import Banner from "../components/Banner";
+import Slider from "../components/Slider";
 
 function Homepage() {
   return (
@@ -10,7 +11,10 @@ function Homepage() {
         <ScrollBottomButton />
         <ScrollTopButton />
       </div>
+
       <div className="flex flex-col mr-8">
+        <Slider />
+
         <h1 className="text-black text-left underline underline-offset-8 my-8">
           from our community &gt;
         </h1>
