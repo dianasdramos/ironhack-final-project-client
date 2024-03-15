@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import IsAnon from "./components/IsAnon";
 import IsPrivate from "./components/IsPrivate";
+import ScrollToTop from "./components/ScrollToTop";
 
 /* PAGES */
 import SignupPage from "./pages/SignupPage";
@@ -36,6 +37,7 @@ import Rolei from "./pages/Rolei";
 function App() {
   return (
     <div>
+      <ScrollToTop />
       <Navbar />
 
       {/* ANON ROUTES */}
