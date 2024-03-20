@@ -1,8 +1,15 @@
-# React + Vite
+VINTAGEGRAM
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Full-stack application worked in pair programming methodology, using the MERN stack (MongoDB, Express, React, and Node.JS). Our project is a collaborative vintage photo community platform to preserve the beauty of the past.
 
-Currently, two official plugins are available:
+>> The user can:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> Signup / Login, having a private profile page
+
+> Navigate through the gallery and camera details
+
+> Upload new photos
+
+> Edit and delete the uploaded photos
+
+> Share the photos on social media
